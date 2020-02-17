@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script defer src="index.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+{{{body}}}
+
+<div id="anychart-embed-RalHWJup" class="anychart-embed anychart-embed-RalHWJup" style="margin-top: 5%; width: 100%;">
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js?hcode=c11e6e3cfefb406e8ce8d99fa8368d33"></script>
+    <div id="ac_style_RalHWJup" style="display:none;">
+        html, body, #container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        }
+    </div>
+    <script>(function(){
+        function ac_add_to_head(el){
+            var head = document.getElementsByTagName('head')[0];
+            head.insertBefore(el,head.firstChild);
+        }
+        function ac_add_link(url){
+            var el = document.createElement('link');
+            el.rel='stylesheet';el.type='text/css';el.media='all';el.href=url;
+            ac_add_to_head(el);
+        }
+        function ac_add_style(css){
+            var ac_style = document.createElement('style');
+            if (ac_style.styleSheet) ac_style.styleSheet.cssText = css;
+            else ac_style.appendChild(document.createTextNode(css));
+            ac_add_to_head(ac_style);
+        }
+        ac_add_link('https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css?hcode=c11e6e3cfefb406e8ce8d99fa8368d33');
+        ac_add_link('https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css?hcode=c11e6e3cfefb406e8ce8d99fa8368d33');
+        ac_add_style(document.getElementById("ac_style_RalHWJup").innerHTML);
+        ac_add_style(".anychart-embed-RalHWJup{width:600px;height:450px;}");
+    })();</script>
+    <div id="container"></div>
+    <script>
+
+        let arr = []
+
+        async function dinamic () {
+            const allTemp = await fetch(
+                    `/tempDinamic`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/text; charset=utf-8',
+                        },
+                        method: 'GET',
+                    });
+            const allTempObj = await allTemp.json();
+
+            for (let i = allTempObj.length-1; i > 0; i--) {
+                arr.push(allTempObj[i].dinamic);
+            }
+
+        anychart.onDocumentReady(function () {
+            // create data set on our data
+            var dataSet = anychart.data.set(getData());
+
+            // map data for the first series, take x from the zero column and value from the first column of data set
+            var seriesData_1 = dataSet.mapAs({'x': 0, 'value': 1});
+
+            // map data for the second series, take x from the zero column and value from the second column of data set
+            var seriesData_2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+            // create line chart
+            var chart = anychart.line();
+
+            // adding dollar symbols to yAxis labels
+            chart.yAxis().labels().format('темп. {%Value}');
+
+            // turn on chart animation
+            chart.animation(true);
+
+            // turn on the crosshair
+            chart.crosshair()
+                    .enabled(true)
+                    .yLabel({enabled: false})
+                    .yStroke(null)
+                    .xStroke('#cecece')
+                    .zIndex(99);
+
+            chart.yAxis()
+                    .title('Температура')
+                    .labels({'padding': [5, 5, 0, 5]});
+            chart.xAxis().title('Время');
+
+            // set chart title text settings
+            chart.title('График темепратуры на улице и в помещении за последние 30 минут');
+
+            // create first series with mapped data
+            var series_1 = chart.spline(seriesData_1);
+            series_1.name('Температура в комнате');
+            series_1.markers().zIndex(100);
+            series_1.hovered().markers()
+                    .enabled(true)
+                    .type('circle')
+                    .size(4);
+
+            // create second series with mapped data
+            var series_2 = chart.spline(seriesData_2);
+            series_2.name('Температура на улице');
+            series_2.markers().zIndex(100);
+            series_2.hovered().markers()
+                    .enabled(true)
+                    .type('circle')
+                    .size(4);
+
+            // turn the legend on
+            chart.legend()
+                    .enabled(true)
+                    .fontSize(13)
+                    .padding([0, 0, 20, 0]);
+
+            // set container id for the chart
+            chart.container('container');
+
+            // initiate chart drawing
+            chart.draw();
+        });
+
+       function getData() {
+               return arr;
+        }
+        }
+        dinamic ()
+    </script>
+</div>
+</body>
+</html>

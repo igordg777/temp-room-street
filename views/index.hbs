@@ -1,0 +1,43 @@
+<body style="background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0HBw0HBw0HBwcHBw0HBwcHBw8IDQcNFREWFhURExMYHSggGBolGxMTITEhMSkrLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDisZFRkrLTcrLSsrKysrKysrKysrLSsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAACAwEABv/EABgQAQEBAQEAAAAAAAAAAAAAAAEAAhES/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A8N27tlttl3bSyRAiRYEgg0mFgTCDgmFgTCDgkFwSCDgt5aEggIStC3kB5byXLeQDlnKnLuQT5ZypyxIJ8ilRLEgmkUqJFIJJFKqQSCbBqpBIJsWokEgmx7NiwZ27tl0HXXXQaTLCRAiZEJkCCQWBMINCYWBMIOCQXBMIMCYXBIIMCXLQtCA8t5LlvIBy7k+XcgnyxKnLEgkkUqpFIJJFKqRSCSQSqkEgmkEqJFgkwajBgmxajBgnda2QZaWSIETIkyBFQgVCBBMIkyBEyJMg0JhYTINCQXBIIOC0LQkEGcu5PlvIByzlTlnIJpYlTkUgkkUqpFIJJFKiQSCaQSowYJpBKjBgmwajBgkxZsGAMJsYCTIEyBkyBUzAyZDNQgZMgTIGTIkyBEwsJhBoTCwJhBoSC4JBBgW8kFvIBy7k+XcgmkUqJFIJJFKiQSCaQajBgkwauqbBNg1GmwBptTUNQTabU1BgmxmwgJPMCZBQmU81MwMqZplTMDKhTKhA81M0ypmB5qEMzzA81CBMgQTCwmQaFvLQkEB5YlTkUgkkUqJBgmwajTYJsGpqmwT1DVTVNgmw1NgwTYM9Q1BNgz1BgnqMmDASZTGeYK5mU8zIKk80yZBUmU8zzBXNTNLNTMFczzTGZBUnmnmpmCmamaZPLBXMwp5ZjAuQZLHTANU2emmwDVPU9NPUBabPVPTAGGp6p6gDTZtNgLTZtPUBabNaeoCwkwYAVCkMxgrlmUs1BgqTKWWoMFcs8tIamWCuamWllnlgsMxpDMYKjUy0RqDBbLUGhlqDBUZmqIyGCnqKx7YsGrBblgsGaaa26YLBi01t0w0wHUNSWnpgOqepaYLAVp6ksFgLTZLBYCwbVjBMZjTGQwWGY0hmMFRqDRGYwWy1Bo5ZjBfLMaIzGCw1BoDMYLjMaAzGC4zNUBkaguat9UTVvqC3qx1S9WOoKOoOouorBqwWxYrByw03LBYM0w03LBaDFhptWnpqMWC26aawYsFtWCwYsO26YdgNow7aMFRmNIZjBXLUGiMxgsNQaAzGC+WY0RmNBYZjQGZqC4yGiakaqLjI1QNSNQWNW+qPq31QV9Weqfq71A3UXUHVjqoSxWKxdQasFsWK0HaYLcsFg7TTW1YLUYsFuWCwYsVuWCwYsbls7AO2jG6goMxojMaiwzGiMxoLDMaAzGC4zNUBmMFjUzVA1M1BY1M1QNSNQWNSNUDUjUFvVvqj6u9QW9WeqXq71BT1Y6p+rHUDdRdQdWOoE6g6i6i6gTqC2OoLBqwWxYLUasFuWCwcsFuWCwase2LdQHt3Y3QPshpWjBYZjRGQwXGQ0RmMFhkaojIYLmpGqAyNQXNSNUDUjUFjUjVA1b6gt6t9UfVvqCvq71S9XeoKerPVP1Y6gbqx1TWxYG6i6g6isCdRdRWKwJ1B1YsFg1YLYsVg1YLYtkG9u7G6DrrroOuuugRMuugRMsugZIuugRK66BErroNLbboMtuug6666DLG26A2N10BYt10BYt10BYNt0AYN10BbLroOuuug/9k=);background-size:100%;">
+<div id="info" align="center">
+    <p>Тестовое задание,<br>выполнил Игорь Грудинин</p>
+</div>
+
+    <div class="container" align="center" style="margin-top: 5%">
+        <div class="jumbotron col-sm-4 pull-center">
+            <form id="formLogin" action="/" method="post">
+                <div>
+                    <p>Выберите место для просмотра температуры</p>
+
+                    <select id="sel" aria-placeholder="список">
+                        <option>Комната</option>
+                        <option>Улица</option>
+                    </select>
+                    <br>
+                    <input style="margin-top: 10px" class="btn btn-primary" data-time="day" type="submit" value="Просмотр информации" />
+
+                </div>
+            </form>
+<!--            <button id="dinamicT" style="margin-top: 10px" class="btn btn-primary">График температур за 30 мин.</button>-->
+        </div>
+    </div>
+
+<div class="container-field">
+    <div style="background-color: aliceblue;">
+        <h2 id="title"></h2>
+
+    </div>
+    <div class="row" style="font-size: 25px;">
+        <div id="dateTitle" class="col-md-6" style="background-color:bisque"></div>
+        <div id="timeTitle" class="col-md-6" style="background-color:bisque"></div>
+
+    </div>
+    <div class="row" style="font-size: 25px;">
+        <div id="date" class="col-md-6" style="background-color:bisque"></div>
+        <div id="time" class="col-md-6" style="background-color:bisque"></div>
+    </div>
+
+</div>
+
+
+
